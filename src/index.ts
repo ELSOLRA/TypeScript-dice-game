@@ -1,6 +1,6 @@
-//import { GameConfig, Dice } from './interfaces';
+import { GameConfig, Dice } from './interfaces';
 
-interface GameConfig {
+/* interface GameConfig {
     throwCount: number;
     diceGoal: number;
 };
@@ -8,7 +8,7 @@ interface GameConfig {
 interface Dice {
     element: HTMLElement;
     previousResult?: number;
-}
+} */
 
 const gameConfig: GameConfig = {
     throwCount: 0,

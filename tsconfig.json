@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
     "skipLibCheck": true,
-    "module": "CommonJS",
+    "module": "ES6",
       "strict": true,
       "target": "ES6",
       "outDir": "./dist/js",
+      "removeComments": true
   
     },
     "include": ["./src"]

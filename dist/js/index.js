@@ -1,6 +1,3 @@
-"use strict";
-//import { GameConfig, Dice } from './interfaces';
-;
 const gameConfig = {
     throwCount: 0,
     diceGoal: 1,
@@ -44,3 +41,4 @@ const resetGame = () => {
 };
 button.addEventListener("click", diceThrow);
 resetButton.addEventListener("click", resetGame);
+export {};
