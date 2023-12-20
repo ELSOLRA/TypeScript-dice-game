@@ -9,6 +9,12 @@ interface Dice {
     element: HTMLElement;
     previousResult?: number;
 } */
+const dice: Dice = {
+  element: document.getElementById("dice") as HTMLElement,
+};
+
+const button = document.getElementById("throw") as HTMLButtonElement;
+const resetButton = document.getElementById("reset") as HTMLButtonElement;
 
 const gameConfig: GameConfig = {
     throwCount: 0,
@@ -16,8 +22,10 @@ const gameConfig: GameConfig = {
     diceThrow: () => {
       const randomResult = Math.floor(Math.random() * 6) + 1;
   
-      dice.element.classList.toggle("dots-" + dice.previousResult);
-      dice.element.classList.toggle("dots-" + randomResult);
+      if(dice.previousResult && dice.previousResult !== randomResult) { 
+        dice.element.classList.remove("dots-" + dice.previousResult);
+      }
+      dice.element.classList.add("dots-" + randomResult);
   
       if (randomResult === gameConfig.diceGoal) {
         const tempDice = document.getElementsByClassName("dots-" + randomResult);
@@ -53,13 +61,6 @@ const gameConfig: GameConfig = {
       resetButton.classList.toggle("hidden");
     },
   };
-  
-  const dice: Dice = {
-    element: document.getElementById("dice") as HTMLElement,
-  };
-
-const button = document.getElementById("throw") as HTMLButtonElement;
-const resetButton = document.getElementById("reset") as HTMLButtonElement;
   
   button.addEventListener("click", gameConfig.diceThrow);
   resetButton.addEventListener("click", gameConfig.resetGame);

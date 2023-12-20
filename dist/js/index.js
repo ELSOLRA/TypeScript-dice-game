@@ -1,10 +1,17 @@
+const dice = {
+    element: document.getElementById("dice"),
+};
+const button = document.getElementById("throw");
+const resetButton = document.getElementById("reset");
 const gameConfig = {
     throwCount: 0,
     diceGoal: 1,
     diceThrow: () => {
         const randomResult = Math.floor(Math.random() * 6) + 1;
-        dice.element.classList.toggle("dots-" + dice.previousResult);
-        dice.element.classList.toggle("dots-" + randomResult);
+        if (dice.previousResult && dice.previousResult !== randomResult) {
+            dice.element.classList.remove("dots-" + dice.previousResult);
+        }
+        dice.element.classList.add("dots-" + randomResult);
         if (randomResult === gameConfig.diceGoal) {
             const tempDice = document.getElementsByClassName("dots-" + randomResult);
             tempDice[0].classList.toggle("faded");
@@ -34,11 +41,6 @@ const gameConfig = {
         resetButton.classList.toggle("hidden");
     },
 };
-const dice = {
-    element: document.getElementById("dice"),
-};
-const button = document.getElementById("throw");
-const resetButton = document.getElementById("reset");
 button.addEventListener("click", gameConfig.diceThrow);
 resetButton.addEventListener("click", gameConfig.resetGame);
 export {};
